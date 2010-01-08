@@ -4,7 +4,7 @@
 %define name	%{oname}%{branch}
 %define version 1.1.90
 %define snap	11058
-%define rel	1
+%define rel	2
 
 # bcond_without: default enabled
 # bcond_with: default disabled
@@ -89,6 +89,10 @@ BuildRequires:	libfame-devel
 Xine-lib is a free multimedia engine.
 
 This is the development version of xine-lib with VDPAU support.
+%if %with plf
+This package is in PLF because this build depends on other PLF
+packages.
+%endif
 
 %package -n xine%{branch}-common
 Summary:	Common files of xine-lib1.2

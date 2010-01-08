@@ -33,6 +33,8 @@ Source:		%{oname}-%{branch}-%{snap}.tar.bz2
 # not have to go backwards in versioning when 1.2-vdpau is merged to 1.2;
 # this is just a plain diff between the heads
 Patch0:		xine-lib-1.2-11046-vdpau-11326.patch
+# fix xdg-basedir fallback (from upstream)
+Patch1:		xine-lib-1.2-11059-xdg-fallback.patch
 Group:		System/Libraries
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	zlib-devel
@@ -128,6 +130,7 @@ VDPAU support.
 %prep
 %setup -q -n %{oname}-%{branch}-%{snap}
 %patch0 -p1
+%patch1 -p1
 
 %build
 ./autogen.sh noconfig

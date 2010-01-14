@@ -4,7 +4,7 @@
 %define name	%{oname}%{branch}
 %define version 1.1.90
 %define snap	11058
-%define rel	2
+%define rel	3
 
 # bcond_without: default enabled
 # bcond_with: default disabled

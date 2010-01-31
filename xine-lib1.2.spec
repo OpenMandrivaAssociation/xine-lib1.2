@@ -2,9 +2,10 @@
 %define oname	xine-lib
 %define branch	1.2
 %define name	%{oname}%{branch}
+# version.sh
 %define version 1.1.90
-%define snap	11058
-%define rel	3
+%define snap	11412
+%define rel	1
 
 # bcond_without: default enabled
 # bcond_with: default disabled
@@ -28,13 +29,6 @@ License:	GPLv2+
 URL:		http://xine-project.org/
 # from http://hg.debian.org/hg/xine-lib/xine-lib-1.2/
 Source:		%{oname}-%{branch}-%{snap}.tar.bz2
-# patch to make it http://hg.debian.org/hg/xine-lib/xine-lib-1.2-vdpau/
-# this is applied separately instead of using it as source, so that we do
-# not have to go backwards in versioning when 1.2-vdpau is merged to 1.2;
-# this is just a plain diff between the heads
-Patch0:		xine-lib-1.2-11046-vdpau-11326.patch
-# fix xdg-basedir fallback (from upstream)
-Patch1:		xine-lib-1.2-11059-xdg-fallback.patch
 Group:		System/Libraries
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	zlib-devel
@@ -73,6 +67,8 @@ BuildRequires:	xcb-devel
 BuildRequires:	libxinerama-devel
 BuildRequires:	libxvmc-devel
 BuildRequires:	vdpau-devel
+BuildRequires:	libflac-devel
+BuildRequires:	libv4l-devel
 BuildRequires:	xmlto
 BuildRequires:	librsvg
 BuildRequires:	optipng
@@ -90,7 +86,7 @@ BuildRequires:	libfame-devel
 %description
 Xine-lib is a free multimedia engine.
 
-This is the development version of xine-lib with VDPAU support.
+This is the development version of xine-lib.
 %if %with plf
 This package is in PLF because this build depends on other PLF
 packages.
@@ -112,8 +108,7 @@ Requires:	xine%{branch}-common >= %{version}
 
 %description -n %{libname}
 Shared libraries for xine-lib1.2, the development version of the
-free multimedia engine. This version is patched to contain the
-VDPAU support.
+free multimedia engine.
 
 %package -n %{devname}
 Summary:	Development files for xine-lib1.2 (unstable version)
@@ -124,13 +119,10 @@ Conflicts:	libxine-devel
 
 %description -n %{devname}
 Development libraries and headers for xine-lib1.2, the unstable version
-of the free multimedia engine. This version is patched to contain the
-VDPAU support.
+of the free multimedia engine.
 
 %prep
 %setup -q -n %{oname}-%{branch}-%{snap}
-%patch0 -p1
-%patch1 -p1
 
 %build
 ./autogen.sh noconfig
@@ -250,6 +242,7 @@ rm -rf %{buildroot}
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_dmx_vc1_es.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_dmx_yuv4mpeg2.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_dmx_yuv_frames.so
+%{_libdir}/xine/plugins/%{plugin_api}/xineplug_flac.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_cdda.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_dvb.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_dvd.so
@@ -265,8 +258,8 @@ rm -rf %{buildroot}
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_smb.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_stdin_fifo.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_v4l.so
+%{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_v4l2.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_vcd.so
-%{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_vcdo.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_nsf.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_sputext.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_vdr.so

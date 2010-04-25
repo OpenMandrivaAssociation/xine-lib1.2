@@ -4,7 +4,7 @@
 %define name	%{oname}%{branch}
 # version.sh
 %define version 1.1.90
-%define snap	11412
+%define snap	11496
 %define rel	1
 
 # bcond_without: default enabled
@@ -29,6 +29,8 @@ License:	GPLv2+
 URL:		http://xine-project.org/
 # from http://hg.debian.org/hg/xine-lib/xine-lib-1.2/
 Source:		%{oname}-%{branch}-%{snap}.tar.bz2
+# add /usr/lib64/codecs to search path
+Patch0:		xine-lib-1.1.18.1-usr-lib64-codecs.patch
 Group:		System/Libraries
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	zlib-devel
@@ -123,11 +125,12 @@ of the free multimedia engine.
 
 %prep
 %setup -q -n %{oname}-%{branch}-%{snap}
+%apply_patches
 
 %build
 ./autogen.sh noconfig
 %configure2_5x \
-	--with-w32-path=%{_libdir}/win32 \
+	--with-w32-path=%{_libdir}/codecs \
 	--enable-directfb \
 %if %without plf
 	--disable-faad
@@ -260,6 +263,7 @@ rm -rf %{buildroot}
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_v4l.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_v4l2.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_vcd.so
+%{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_vcdo.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_nsf.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_sputext.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_vdr.so

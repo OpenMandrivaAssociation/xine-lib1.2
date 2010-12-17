@@ -4,8 +4,8 @@
 %define name	%{oname}%{branch}
 # version.sh
 %define version 1.1.90
-%define snap	11496
-%define rel	3
+%define snap	11592
+%define rel	1
 
 # bcond_without: default enabled
 # bcond_with: default disabled
@@ -29,8 +29,6 @@ License:	GPLv2+
 URL:		http://xine-project.org/
 # from http://hg.debian.org/hg/xine-lib/xine-lib-1.2/
 Source:		%{oname}-%{branch}-%{snap}.tar.bz2
-# add /usr/lib64/codecs to search path
-Patch0:		xine-lib-1.1.18.1-usr-lib64-codecs.patch
 Group:		System/Libraries
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	zlib-devel
@@ -217,6 +215,7 @@ rm -rf %{buildroot}
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_spuhdmv.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_h264.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_mpeg12.so
+%{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_mpeg4.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_vc1.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_yuv.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_dmx_asf.so

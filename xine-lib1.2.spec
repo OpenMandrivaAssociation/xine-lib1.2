@@ -19,12 +19,16 @@
 
 %if %with plf
 %define distsuffix	plf
+%if %mdvver >= 201100
+# make EVR of plf build higher than regular to allow update, needed with rpm5 mkrel
+%define extrarelsuffix plf
+%endif
 %endif
 
 Summary:	A free multimedia engine (development version)
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 0.hg%{snap}.%rel
+Release:	%mkrel 0.hg%{snap}.%rel%{?extrarelsuffix}
 License:	GPLv2+
 URL:		http://xine-project.org/
 # from http://hg.debian.org/hg/xine-lib/xine-lib-1.2/

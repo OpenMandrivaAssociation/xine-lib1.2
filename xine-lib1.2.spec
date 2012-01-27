@@ -50,7 +50,7 @@ BuildRequires:	libmagick-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libmodplug-devel
 BuildRequires:	libmpcdec-devel
-BuildRequires:	libmng-devel
+BuildRequires:	mng-devel
 BuildRequires:	speex-devel
 BuildRequires:	libtheora-devel
 BuildRequires:	libvorbis-devel

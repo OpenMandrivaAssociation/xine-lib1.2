@@ -3,8 +3,7 @@
 %define branch	1.2
 %define name	%{oname}%{branch}
 # version.sh
-%define version 1.1.90
-%define snap	11592
+%define version 1.2.0
 %define rel	1
 
 # bcond_without: default enabled
@@ -28,11 +27,10 @@
 Summary:	A free multimedia engine (development version)
 Name:		%{name}
 Version:	%{version}
-Release:	%mkrel 0.hg%{snap}.%rel%{?extrarelsuffix}
+Release:	%mkrel %rel%{?extrarelsuffix}
 License:	GPLv2+
 URL:		http://xine-project.org/
-# from http://hg.debian.org/hg/xine-lib/xine-lib-1.2/
-Source:		%{oname}-%{branch}-%{snap}.tar.bz2
+Source:		http://downloads.sourceforge.net/xine/%{oname}-%{version}.tar.xz
 Group:		System/Libraries
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	zlib-devel
@@ -126,7 +124,7 @@ Development libraries and headers for xine-lib1.2, the unstable version
 of the free multimedia engine.
 
 %prep
-%setup -q -n %{oname}-%{branch}-%{snap}
+%setup -q -n %{oname}-%{version}
 %apply_patches
 
 %build
@@ -218,6 +216,7 @@ rm -rf %{buildroot}
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_spudvb.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_spuhdmv.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_h264.so
+%{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_h264_alter.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_mpeg12.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_mpeg4.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_decode_vdpau_vc1.so

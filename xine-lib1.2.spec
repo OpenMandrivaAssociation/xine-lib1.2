@@ -46,7 +46,7 @@ BuildRequires:	esound-devel
 BuildRequires:	a52dec-devel
 BuildRequires:	ffmpeg-devel
 BuildRequires:	libgdk_pixbuf2.0-devel
-BuildRequires:	libmagick-devel
+BuildRequires:	imagemagick-devel
 BuildRequires:	libmad-devel
 BuildRequires:	libmodplug-devel
 BuildRequires:	libmpcdec-devel

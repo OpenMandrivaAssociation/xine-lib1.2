@@ -40,7 +40,7 @@ BuildRequires:	libx11-devel
 BuildRequires:	libxext-devel
 BuildRequires:	libxv-devel
 BuildRequires:	libalsa-devel
-BuildRequires:	libjack-devel
+BuildRequires:	jackit-devel
 BuildRequires:	pulseaudio-devel
 BuildRequires:	esound-devel
 BuildRequires:	a52dec-devel

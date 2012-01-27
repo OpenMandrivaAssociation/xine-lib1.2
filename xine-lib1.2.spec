@@ -142,6 +142,7 @@ of the free multimedia engine.
 rm -rf %{buildroot} installed-docs
 %makeinstall_std
 %multiarch_binaries %{buildroot}%{_bindir}/xine-config
+
 mv %{buildroot}%{_mandir}/man5/xine{,-%{branch}}.5
 rm -f %{buildroot}%{_libdir}/*.la
 mv %{buildroot}%{_datadir}/doc/xine-lib installed-docs

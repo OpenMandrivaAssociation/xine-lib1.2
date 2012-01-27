@@ -263,7 +263,6 @@ rm -rf %{buildroot}
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_rtsp.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_smb.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_stdin_fifo.so
-%{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_v4l.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_v4l2.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_vcd.so
 %{_libdir}/xine/plugins/%{plugin_api}/xineplug_inp_vcdo.so

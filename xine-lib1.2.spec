@@ -125,7 +125,7 @@ of the free multimedia engine.
 
 %prep
 %setup -q -n %{oname}-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 ./autogen.sh noconfig

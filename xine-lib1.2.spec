@@ -29,7 +29,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%mkrel %rel%{?extrarelsuffix}
 License:	GPLv2+
-URL:		http://xine-project.org/
+URL:		https://xine-project.org/
 Source:		http://downloads.sourceforge.net/xine/%{oname}-%{version}.tar.xz
 Group:		System/Libraries
 BuildRoot:	%{_tmppath}/%{name}-root
